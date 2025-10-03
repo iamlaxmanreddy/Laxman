@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Anugu Laxman Reddy — Portfolio</title>
+  <meta name="description" content="Portfolio of Anugu Laxman Reddy — BS-MS Data Science, researcher, projects, skills and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-dark: rgba(17, 24, 39, 0.6);
+      --text-dark: #e2e8f0;
+      --muted-dark: #94a3b8;
+      --accent-primary-dark: #38bdf8;
+      --accent-secondary-dark: #67e8f9;
+      --glass-border-dark: rgba(255, 255, 255, 0.1);
+      --hover-dark: rgba(255, 255, 255, 0.05);
+
+      --bg-light: #f8fafc;
+      --card-light: rgba(255, 255, 255, 0.6);
+      --text-light: #0f172a;
+      --muted-light: #475569;
+      --accent-primary-light: #0ea5e9;
+      --accent-secondary-light: #06b6d4;
+      --glass-border-light: rgba(0, 0, 0, 0.1);
+      --hover-light: rgba(0, 0, 0, 0.05);
+      
+      --radius: 16px;
+      --maxw: 1024px;
+      --transition-speed: 0.3s;
+    }
+
+    [data-theme="dark"] {
+      --bg: var(--bg-dark);
+      --card-bg: var(--card-dark);
+      --text-color: var(--text-dark);
+      --muted-color: var(--muted-dark);
+      --accent-primary: var(--accent-primary-dark);
+      --accent-secondary: var(--accent-secondary-dark);
+      --glass-border: var(--glass-border-dark);
+      --hover-bg: var(--hover-dark);
+      color-scheme: dark;
+    }
+
+    [data-theme="light"] {
+      --bg: var(--bg-light);
+      --card-bg: var(--card-light);
+      --text-color: var(--text-light);
+      --muted-color: var(--muted-light);
+      --accent-primary: var(--accent-primary-light);
+      --accent-secondary: var(--accent-secondary-light);
+      --glass-border: var(--glass-border-light);
+      --hover-bg: var(--hover-light);
+      color-scheme: light;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed); }
+
+    @keyframes background-pan { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-color);
+      background-image: linear-gradient(135deg, var(--accent-primary), var(--bg) 40%, var(--bg) 60%, var(--accent-secondary));
+      background-size: 400% 400%;
+      animation: background-pan 20s ease infinite;
+    }
+
+    .wrap { max-width: calc(var(--maxw) + 48px); margin: 36px auto; padding: 0 24px; animation: fade-in 0.8s ease-out; }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .grid { display: grid; grid-template-columns: 1fr 340px; gap: 24px; margin-top: 24px; }
+    main { min-width: 0; }
+    aside { position: sticky; top: 24px; }
+    section { margin-bottom: 24px; }
+    section:last-child { margin-bottom: 0; }
+    h1 { margin: 0; font-size: 24px; }
+    h2 { font-size: 16px; margin: 0 0 12px 0; color: var(--text-color); font-weight: 700; }
+    p.lead { margin: 0; color: var(--muted-color); line-height: 1.6; }
+    
+    header { display: flex; gap: 20px; align-items: center; margin-bottom: 24px; }
+    .avatar { width: 96px; height: 96px; border-radius: 12px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 28px; color: var(--bg-dark); flex-shrink: 0; }
+    .hero { flex: 1; }
+    .subtitle { color: var(--muted-color); margin-top: 8px; font-size: 14px; line-height: 1.5; }
+    .header-actions { display: flex; gap: 10px; }
+
+    .chip { display: inline-block; background: var(--hover-bg); padding: 8px 12px; border-radius: 10px; font-size: 13px; margin: 4px; color: var(--muted-color); border: 1px solid transparent; }
+    .list { background: var(--hover-bg); padding: 12px; border-radius: 12px; }
+    .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .edu-item, .pos-item, .ach-item, .proj-item { padding: 12px; border-radius: 10px; margin-bottom: 8px; background: var(--hover-bg); }
+    .edu-item:last-child, .pos-item:last-child, .ach-item:last-child, .proj-item:last-child { margin-bottom: 0; }
+    .meta { color: var(--muted-color); font-size: 13px; margin-top: 4px; }
+    .skills-container { display: flex; flex-wrap: wrap; margin: -4px; }
+    
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 0; font-weight: 600; cursor: pointer; text-decoration: none; font-size: 14px; }
+    .btn.primary { background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); color: var(--bg-dark); }
+    .btn.ghost { background: transparent; border: 1px solid var(--glass-border); color: var(--muted-color); }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+
+    .icon-btn { padding: 10px; }
+    .icon-btn svg { width: 20px; height: 20px; }
+
+    .contact .meta { display: flex; align-items: center; gap: 8px; }
+    .contact .meta svg { width: 16px; height: 16px; color: var(--muted-color); }
+    .contact a { color: var(--accent-primary); text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+
+    footer { margin-top: 24px; text-align: center; color: var(--muted-color); font-size: 13px; padding-bottom: 24px; }
+    
+    #theme-toggle .sun-icon { display: none; }
+    #theme-toggle .moon-icon { display: block; }
+    [data-theme="light"] #theme-toggle .sun-icon { display: block; }
+    [data-theme="light"] #theme-toggle .moon-icon { display: none; }
+
+    #toast-container { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; }
+    .toast { padding: 12px 20px; border-radius: 10px; background: #333; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); animation: fade-in 0.3s, fade-out 0.3s 2.7s; }
+    @keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      aside { position: static; top: unset; }
+      header { flex-wrap: wrap; }
+      .header-actions { width: 100%; justify-content: flex-start; margin-top: 16px; }
+    }
+    @media (max-width: 480px) {
+      .two-col { grid-template-columns: 1fr; }
+      h1 { font-size: 20px; }
+      .header-actions { flex-direction: column; align-items: stretch; text-align: center; }
+    }
+    @media print {
+      body { background: white; color: black; }
+      .card { border: none; box-shadow: none; padding: 0; background: transparent; backdrop-filter: none; }
+      .btn, aside, footer { display: none; }
+      .wrap { margin: 0; padding: 0; }
+      .grid { grid-template-columns: 1fr; gap: 0; }
+      h1,h2,p { color: black !important; }
+      .meta, .subtitle { color: #555 !important; }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <div class="avatar">AL</div>
+        <div class="hero">
+          <h1>Anugu Laxman Reddy — BS-MS Data Science</h1>
+          <div class="subtitle">Dedicated learning researcher • Neuroinformatics, ML & BCI • IISER TVM (2023–Present)</div>
+        </div>
+        <div class="header-actions">
+          <button id="theme-toggle" class="btn ghost icon-btn" title="Toggle theme">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.803 16.197a.75.75 0 011.06 0l1.59 1.59a.75.75 0 01-1.06 1.06l-1.59-1.59a.75.75 0 010-1.06zM12 21.75a.75.75 0 01-.75-.75v-2.25a.75.75 0 011.5 0V21a.75.75 0 01-.75.75zM5.106 17.803a.75.75 0 010-1.06l1.591-1.59a.75.75 0 111.06 1.06l-1.59 1.59a.75.75 0 01-1.06 0zM2.25 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3a.75.75 0 01-.75-.75zM6.197 5.106a.75.75 0 011.06 0l1.59 1.59a.75.75 0 01-1.06 1.06L6.197 6.166a.75.75 0 010-1.06z"></path></svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-3.51 1.713-6.635 4.398-8.552a.75.75 0 01.819.162z" clip-rule="evenodd"></path></svg>
+          </button>
+          <a class="btn primary" href="mailto:laxmanreddyanugu1218@gmail.com">Email Me</a>
+        </div>
+      </header>
+
+      <div class="grid">
+        <main>
+          <section>
+            <h2>About Me</h2>
+            <p class="lead">I am a dedicated learning researcher with an insatiable curiosity about how things work across various fields and eager to explore emerging technologies. I come from a hardworking, close-knit family that prioritised education despite limited resources — values of perseverance, dedication and giving back shape my journey. As the first in my family pursuing advanced academics, I am committed to making the most of every opportunity.</p>
+          </section>
+
+          <section>
+            <h2>Education</h2>
+            <div class="list">
+              <div class="edu-item"><strong>IISER Thiruvananthapuram</strong> — BS-MS Integrated (Data Science)<div class="meta">2023 — Present</div></div>
+              <div class="edu-item"><strong>TSWR Jr. College, Gowlidoddi, Hyderabad</strong> — Higher secondary<div class="meta">2021 — 2023 • Grade: 96.8%</div></div>
+              <div class="edu-item"><strong>Telangana State Residential School [B], Thungathurthy</strong> — Secondary Education<div class="meta">2016 — 2021</div></div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Coursework (selected)</h2>
+            <div class="list two-col">
+              <div>
+                <div class="chip">Mathematics for ML</div><div class="chip">Statistics for DS</div><div class="chip">Data Structures & Algorithms</div><div class="chip">DBMS</div><div class="chip">Operating Systems</div><div class="chip">Graph Theory</div><div class="chip">Data Analytics & Vis</div><div class="chip">Introduction to AI</div>
+              </div>
+              <div>
+                <div class="chip">Calculus & Matrices</div><div class="chip">Probability Theory</div><div class="chip">Biomolecules & Genetics</div><div class="chip">Mechanics</div><div class="chip">Physical Chemistry</div><div class="chip">Experimentation & Data Analysis</div><div class="chip">Electro Magnetism & Optics</div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Technical Skills</h2>
+            <div class="list">
+              <div class="skills-container">
+                <span class="chip">Python</span><span class="chip">C++</span><span class="chip">C</span><span class="chip">MATLAB</span><span class="chip">SQL</span><span class="chip">R</span><span class="chip">HTML/CSS/JS</span><span class="chip">Jupyter/Colab</span><span class="chip">VS Code</span>
+              </div>
+              <div style="margin-top:12px; color:var(--muted-color); font-size:13px;"><strong>Soft skills:</strong> Collaboration, Public Speaking, Analytical Thinking, Technical Writing, Conflict Resolution, Adaptability.</div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Personal Projects</h2>
+            <div class="list">
+              <div class="proj-item">
+                <strong>Air Pollution Prediction Using Machine Learning</strong>
+                <div class="meta">2025 — Achieved ~85% accuracy (R² ≈ 0.82) using Random Forest & XGBoost. Tools: Python, Pandas, scikit-learn. Features: PM2.5, NO2, SO2, CO, O3; predicted AQI; weekly forecast pipeline.</div>
+              </div>
+              <div class="proj-item">
+                <strong>Coding Club (CCIT) — Tech team member</strong>
+                <div class="meta">2025 — Contributed to tech events and workshops.</div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Positions of Responsibility</h2>
+            <div class="list">
+              <div class="pos-item"><strong>Team Lead & State Representative — SISF 2020</strong><div class="meta">Mentored participants and managed logistics</div></div>
+              <div class="pos-item"><strong>Event Host & Coordinator — College Principal’s Retirement (2018)</strong><div class="meta">Hosted & managed event for ~600 attendees</div></div>
+              <div class="pos-item"><strong>School Captain (2019–2020)</strong><div class="meta">Led student body and organized events</div></div>
+            </div>
+          </section>
+        </main>
+
+        <aside>
+          <section class="card">
+            <h2>Contact & Links</h2>
+            <div class="contact">
+              <div class="meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" /><path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" /></svg><a href="mailto:laxmanreddyanugu1218@gmail.com">laxmanreddyanugu1218@gmail.com</a></div>
+              <div class="meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5h-1.5A11.5 11.5 0 013.5 6.5V5A1.5 1.5 0 012 3.5z" /></svg><a href="tel:+916300665643">+91 63006 65643</a></div>
+              </div>
+          </section>
+
+          <section class="card">
+            <h2>Research & Interests</h2>
+            <div class="skills-container">
+              <div class="chip">Neuroinformatics & BCI</div><div class="chip">Cognitive Load Detection</div><div class="chip">Deep Learning</div><div class="chip">FinTech</div><div class="chip">Computer Vision</div>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Achievements</h2>
+            <div class="list" style="padding:0;background:transparent;">
+              <div class="ach-item"><strong>JN State Science, Math & Env Exhibition — 1st Place</strong><div class="meta">Dec 2019</div></div>
+              <div class="ach-item"><strong>Southern India Science Fair — Commendation Award</strong><div class="meta">Jan 2020</div></div>
+              <div class="ach-item"><strong>State Level SPACE Fest Selection</strong><div class="meta">2016–2018</div></div>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Actions</h2>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <button class="btn ghost" onclick="window.print()">Print / Save as PDF</button>
+              <button class="btn ghost" onclick="copyEmail()">Copy Email Address</button>
+              <button class="btn ghost" onclick="downloadHTML()">Download as HTML</button>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+      <footer>Built with ❤️ • Anugu Laxman Reddy • IISER TVM</footer>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script>
+    (function ThemeSwitcher() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const docElement = document.documentElement;
+
+      const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      docElement.setAttribute('data-theme', savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = docElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        docElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    })();
+
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+    
+    function copyEmail(){
+      const email = 'laxmanreddyanugu1218@gmail.com';
+      navigator.clipboard?.writeText(email)
+        .then(() => showToast('Email copied to clipboard!'))
+        .catch(() => showToast('Failed to copy email.'));
+    }
+
+    function downloadHTML(){
+      const content = '<!doctype html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([content], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'anugu_laxman_reddy_portfolio.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast('Downloading HTML file...');
+    }
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = `fade-in 0.8s ease-out forwards`;
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
